@@ -1,0 +1,42 @@
+﻿@page "/news"
+@inject AqvaTechTask.Service.NewsService NewsService
+@inject AqvaTechTask.Service.CrawlerService CrawlerService
+
+<h3>News</h3>
+
+<button @onclick="FetchNews">Fetch News</button>
+
+<input @bind="searchTerm" @bind:event="oninput" placeholder="Search..." />
+
+<ul class="news-list">
+    @foreach (var news in filteredNews)
+    {
+        <li class="news-item">
+            <a href="@news.Link" class="news-link">
+                <img src="@news.ImageUrl" alt="News Image" class="news-image" />
+                <span class="news-title">@news.Title</span>
+            </a>
+        </li>
+    }
+</ul>
+
+@code {
+    private List<AqvaTechTask.Models.News> newsList = new List<AqvaTechTask.Models.News>();
+    private string searchTerm = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchNews();
+    }
+
+    private async Task FetchNews()
+    {
+        newsList = await CrawlerService.CrawlNewsAsync();
+        await NewsService.StoreNewsAsync(newsList);
+    }
+
+    private IEnumerable<AqvaTechTask.Models.News> filteredNews =>
+        string.IsNullOrEmpty(searchTerm)
+            ? newsList
+            : newsList.Where(n => n.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase));
+}
