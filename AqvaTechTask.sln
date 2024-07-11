@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AqvaTechTask", "AqvaTechTask\AqvaTechTask.csproj", "{C2DC484C-7D14-4226-956D-FEA8501DF8C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSearch&Crawl", "AqvaTechTask\ElasticSearch&Crawl.csproj", "{C2DC484C-7D14-4226-956D-FEA8501DF8C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
