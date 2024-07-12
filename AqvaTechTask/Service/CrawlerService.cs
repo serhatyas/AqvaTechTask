@@ -9,7 +9,7 @@ namespace AqvaTechTask.Service
 
         public async Task<List<News>> CrawlNewsAsync()
         {
-            var url = "https://www.sozcu.com.tr";
+            var url = "https://www.haberler.com.tr";
             var web = new HtmlWeb();
             var doc = await web.LoadFromWebAsync(url);
 
